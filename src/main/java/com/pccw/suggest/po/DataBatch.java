@@ -1,0 +1,178 @@
+package com.pccw.suggest.po;
+
+import java.io.Serializable;
+import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
+@Entity
+@Table (name = "sug_data_batch")
+public class DataBatch implements Serializable{
+	
+	private Integer id;
+	
+	private ControlBatchLog ctl_batch_log;
+	
+	private Date record_datetime;
+	
+	private Date record_date;
+	
+	private String type;
+	
+	private IDMap user_id_map;
+	
+	private IDMap item_id_map;
+	
+	private Float value;
+	
+	private String status;
+	
+	private Integer enable;
+	
+	private Date create_date;
+	
+	private Date last_mod_date;
+	
+	private String last_mod_user;
+
+	@Id
+	@GeneratedValue
+	@Column(name = "id")
+	public Integer getId() {
+		return id;
+	}
+	
+	@ManyToOne(fetch=FetchType.LAZY)
+//	@Cascade({CascadeType.SAVE_UPDATE})
+    @JoinColumn(name="ctl_batch_log_id")
+	public ControlBatchLog getCtl_batch_log() {
+		return ctl_batch_log;
+	}
+
+	@Column(name = "record_datetime")
+	public Date getRecord_datetime() {
+		return record_datetime;
+	}
+
+	@Column(name = "record_date")
+	public Date getRecord_date() {
+		return record_date;
+	}
+
+	@Column(name = "type")
+	public String getType() {
+		return type;
+	}
+
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name = "user_id")
+	public IDMap getUser_id_map() {
+		return user_id_map;
+	}
+
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name = "item_id")
+	public IDMap getItem_id_map() {
+		return item_id_map;
+	}
+
+	@Column(name = "value")
+	public Float getValue() {
+		return value;
+	}
+
+	@Column(name = "status")
+	public String getStatus() {
+		return status;
+	}
+
+	@Column(name = "enable")
+	public Integer getEnable() {
+		return enable;
+	}
+	
+	@Column(name = "create_datetime")
+	public Date getCreate_date() {
+		return create_date;
+	}
+
+	@Column(name = "last_mod_datetime", nullable = true)
+	public Date getLast_mod_date() {
+		return last_mod_date;
+	}
+
+	@Column(name = "last_mod_user", nullable = true)
+	public String getLast_mod_user() {
+		return last_mod_user;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public void setCtl_batch_log(ControlBatchLog ctl_batch_log) {
+		this.ctl_batch_log = ctl_batch_log;
+	}
+
+	public void setRecord_datetime(Date record_datetime) {
+		this.record_datetime = record_datetime;
+	}
+
+	public void setRecord_date(Date record_date) {
+		this.record_date = record_date;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public void setUser_id_map(IDMap user_id_map) {
+		this.user_id_map = user_id_map;
+	}
+
+	public void setItem_id_map(IDMap item_id_map) {
+		this.item_id_map = item_id_map;
+	}
+
+	public void setValue(Float value) {
+		this.value = value;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public void setEnable(Integer enable) {
+		this.enable = enable;
+	}
+
+	public void setCreate_date(Date create_date) {
+		this.create_date = create_date;
+	}
+
+	public void setLast_mod_date(Date last_mod_date) {
+		this.last_mod_date = last_mod_date;
+	}
+
+	public void setLast_mod_user(String last_mod_user) {
+		this.last_mod_user = last_mod_user;
+	}
+
+
+	
+	
+	
+	
+}
